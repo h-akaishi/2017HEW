@@ -1,26 +1,57 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('アイテム一覧'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('アイテム種別一覧'), ['controller' => 'ItemTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('アイテム種別追加'), ['controller' => 'ItemTypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('アイテム画像一覧'), ['controller' => 'ItemImgs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('アイテム画像追加'), ['controller' => 'ItemImgs', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="items form large-9 medium-8 columns content">
-    <?= $this->Form->create($item) ?>
-    <fieldset>
-        <legend><?= __('アイテム追加') ?></legend>
-        <?php
-            echo $this->Form->input('item_name');
-            //echo $this->Form->input('item_type_id', ['options' => $itemTypes]);
-            echo $this->Form->input('item_type_id', ['options' => $itemTypes]);
-            echo $this->Form->input('item_qty');
-            echo $this->Form->input('item_price');
-            //echo $this->Form->file('img');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('登録')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<div class="row">
+       <div class="col-md-6 col-md-offset-3">
+          <h1>アイテム登録</h1>
+          <?= $this->Form->create($item, ['type' => 'file','class' => 'form-horizontal']) ?>
+              
+            <div class="form-group">
+              <label class="col-md-2 control-label">商品名：</label>
+              <div class="col-md-10">
+                <?= $this->Form->input('item_name', ['class' => 'form-control','placeholder' => 'アイテム名', 'label' => false]) ?><br />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-2 control-label">カテゴリ：</label>
+              <div class="col-md-10">
+                <?= $this->Form->input('item_type_id', ['options' => $itemTypes, 'class' => 'form-control', 'label' => false]) ?>
+                <br />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">在庫数：</label>
+              <div class="col-md-10">
+                <?= $this->Form->input('item_qty', ['class' => 'form-control', 'label' => false, 'min' => 0]) ?><br />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">価格：</label>
+              <div class="col-md-10">
+                <?= $this->Form->input('item_price', ['class' => 'form-control', 'label' => false , 'min' => 0]) ?><br />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">商品説明：</label>
+              <div class="col-md-10">
+                <?= $this->Form->textarea('item_detail', ['class' => 'form-control','placeholder' => '商品の説明をここに入力', 'label' => false]) ?><br />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">商品イメージ：</label>
+              <div class="col-md-10">
+                <?= $this->Form->input('item_img', ['type' => 'file', 'class' => 'form-control', 'label' => false]) ?>
+                <br />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <?= $this->Form->button(__('登録'),['class' => 'btn btn-primary btn-block']) ?>
+              </div>
+            </div>
+        　   <?= $this->Form->end() ?>     
+    　 </div>
+    </div>

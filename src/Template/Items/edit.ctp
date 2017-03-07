@@ -23,6 +23,7 @@
             echo $this->Form->input('item_type_id', ['options' => $itemTypes]);
             echo $this->Form->input('item_qty');
             echo $this->Form->input('item_price');
+            echo $this->Form->input('item_detail');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -35,6 +35,10 @@
             <td><?= $this->Number->format($item->item_price) ?></td>
         </tr>
         <tr>
+            <th><?= __('Item Detail') ?></th>
+            <td><?= h($item->item_detail) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($item->created) ?></td>
         </tr>
