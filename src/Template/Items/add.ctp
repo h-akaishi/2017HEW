@@ -18,7 +18,7 @@
             echo $this->Form->input('item_type_id', ['options' => $itemTypes]);
             echo $this->Form->input('item_qty');
             echo $this->Form->input('item_price');
-            echo $this->Form->file('img');
+            //echo $this->Form->file('img');
         ?>
     </fieldset>
     <?= $this->Form->button(__('登録')) ?>
