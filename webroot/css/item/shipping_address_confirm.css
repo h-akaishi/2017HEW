@@ -1,0 +1,158 @@
+body .content{
+	margin-top: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  body .content{
+	margin-top: 80px;
+	}
+}
+
+.col-md-7 .top-text{
+	font-size: 20px;
+}
+
+.input-box{
+	text-align: center;
+}
+
+input{
+	border:0;
+	padding:10px;
+	font-size:1.3em;
+	color:#222;
+	border:solid 1px #ccc;
+	margin:10px 0 20px;
+	width:80%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+input:focus {
+    border:solid 1px #EEA34A;
+}
+
+
+.buy-btn{
+	margin-top: 20px;
+	cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #2996cc;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.buy-btn:hover{
+	opacity: 0.6;
+}
+
+.back-btn{
+	margin-top: 20px;
+	cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #CCC;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.back-btn:hover{
+	opacity: 0.6;
+}
+
+.right-box{
+	border-left: 2px solid #e1e1e1;
+	background-color: #fafafa;
+	min-height: 100vh;
+}
+
+.right-box .item-box{
+	margin-top: 20px;
+}
+
+.right-box .item-box .img-box{
+	border:1px solid #e1e1e1;
+	width: 70px;
+	height:70px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.product-thumbnail__quantity{
+	font-size: 0.85714em;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.15em 0.65em;
+    border-radius: 2em;
+    background-color: rgba(255, 16, 16, 0.9);
+    color: #fff;
+    position: absolute;
+    top: -0.75em;
+    z-index: 3;
+}
+
+.sum-box{
+	margin-top: 10px;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.sum-box p span{
+	float: right;
+}
+
+.sum-box .sum-line{
+	margin-top: 20px;
+}
+
+.sum-box .ship-line{
+	margin-bottom: 20px;
+}
+
+.total-box{
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+.total-box p span{
+	float: right;
+	font-size: 24px;
+}
+
+.credit-box{
+	width: 80%;
+	border: 1px solid #e1e1e1;
+	border-radius: 10px;
+}
+
+.credit-box .title-box{
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.credit-box .title-box p{
+	position: relative;
+	top: 30%;
+	margin-left: 10px;
+}
+
+.credit-box .input-box{
+	background-color: #fafafa;
+}
+

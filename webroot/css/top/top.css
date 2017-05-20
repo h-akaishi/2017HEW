@@ -1,0 +1,142 @@
+
+
+body{
+	margin: 0;
+}
+
+main{
+	height: calc(100vh - 50px);
+}
+
+.form-erea{
+	width: 400px;
+	padding-top: 8px;
+}
+
+@media screen and (max-width: 1000px) {
+  .form-erea{
+  	width: 150px;
+  }
+}
+
+.banner{
+	background: url(../../img/top/top1.jpeg) no-repeat 0px 0px;
+	background-size: cover;
+	width: 100%;
+	height: 70%;
+	text-align: center;
+}
+
+main .banner .main-logo{
+	position: relative;
+	top: 120px;
+}
+
+main .banner h2{
+	text-align: center;
+	font-family: apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
+	font-weight: bold;
+	color: #FFF;
+}
+@media screen and (max-width: 1000px) {
+  main .banner h2{
+  	font-size: 20px;
+  }
+}
+
+.bnr{
+	height: 30%;
+}
+
+.bnr-left {
+    padding: 0;
+    height: 100%;
+}
+
+.grid figure{
+	height: 100%;
+}
+
+.grid figure img {
+    position: relative;
+    display: block;
+    max-height: 100%;
+    min-width: 100%;
+    opacity: 0.8;
+}
+
+.bnr .col-md-3{
+	padding: 0;
+}
+
+figure {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+figure .text-erea{
+    color: "FFF";
+}
+
+.bnr-left {
+    color: #fff;
+}
+.bnr-left figure:after {
+    position: absolute;
+    border: solid 1px #fff;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: scale(1.0, 1.0);
+    transition: all .3s ease-out;
+}
+.bnr-left figure:hover:after {
+    opacity: 1;
+    transform: scale(0.92, 0.88);
+}
+.bnr-left figcaption {
+    position: absolute;
+    width: 100%;
+    top: 32%;
+    left: 0;
+    margin-top: -1em;
+    font-size: 20px;
+    letter-spacing: 5px;
+    opacity: 0;
+    transition: all .3s ease-out .2s;
+    text-align: center;
+    color: #FFF;
+}
+
+@media screen and (min-width: 1000px) {
+  .bnr-left figure:hover figcaption {
+    letter-spacing: 1px;
+    opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+  .bnr-left figure figcaption {
+    letter-spacing: 1px;
+    opacity: 1;
+    }
+}
+
+
+.bnr-left figure img {
+    transition: all .8s ease-out;
+}
+.bnr-left figure:hover img {
+    opacity: .4;
+    transform: scale(1.3);
+}
+
+figure figcaption p{
+	font-size: 12px;
+}

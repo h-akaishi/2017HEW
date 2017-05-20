@@ -76,6 +76,10 @@ class ItemsTable extends Table
             ->requirePresence('item_price', 'create')
             ->notEmpty('item_price');
 
+        $validator
+            ->requirePresence('item_detail', 'create')
+            ->notEmpty('item_detail');
+
         return $validator;
     }
 

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Controller
@@ -11,6 +12,42 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth',[
+        'authenticate' => [
+            'Form' => [
+                'fields' => [
+                    'username' => 'user_mail',
+                    'password' => 'password'
+                ]
+            ]
+        ],
+        'loginAction' => [
+            'controller' => 'Users',
+            'action' => 'login'
+        ],
+        'loginRedirect' => [
+            'controller' => 'Users',
+            'action' => 'index'
+        ]
+    ]);
+
+        $countcart = TableRegistry::get('MyCarts');
+
+      $countId = $this->request->session()->read('Auth.User.id');
+      $countCart = $countcart->find()->where(['user_id' => $countId])->count('id');
+      $this->set(compact('countCart','countId'));   
+    }
+    public function beforeFilter(\Cake\Event\Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add']);
+    }
+
     /**
      * Index method
      *
@@ -18,10 +55,18 @@ class UsersController extends AppController
      */
     public function index()
     {
+
+        if($this->Auth->User('rule') != 'admin'){
+            return $this->redirect(['action' => 'mypage/'.$this->Auth->User('id')]);
+        }
+
+        $this->viewBuilder()->layout('admin');
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
+
+        
     }
 
     /**
@@ -48,6 +93,7 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('basic');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -111,13 +157,18 @@ class UsersController extends AppController
 
     public function login()
     {
+        $this->viewBuilder()->layout('login');
         if($this->request->is('post')){
             $user = $this->Auth->identify();
             if($user){
                 $this->Auth->setUser($user);
-                /*return $this->redirect($this->Auth->redirectUrl());*/
-                $page = "/".$user['id'];
-            return $this->redirect(['action' => 'mypage'.$page]);
+                if(empty($this->protectAuthRedirect)){
+                    return $this->redirect($this->Auth->redirectUrl());
+                }else{
+                    /*$page = "/".$user['id'];
+                    return $this->redirect(['action' => 'mypage'.$page]);*/
+                    return $this->redirect(['action' => 'index']);
+                }
 
 
             }
@@ -132,6 +183,7 @@ class UsersController extends AppController
 
     public function mypage($id = null)
     {
+        $this->viewBuilder()->layout('mypage');
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -155,6 +207,21 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
+    }
+
+    public function adminIndex()
+    {
+        $this->viewBuilder()->layout('admin');
+        $order = TableRegistry::get('Orders');
+        $user = TableRegistry::get('Users');
+
+
+        $cCart = $order->find()->count('id');
+        $cUser = $user->find()->count('id');
+
+
+        $this->set(compact('cCart','cUser'));
+        
     }
 
 }

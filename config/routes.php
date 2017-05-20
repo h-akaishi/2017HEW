@@ -49,7 +49,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'top']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -57,6 +57,17 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     $routes->connect('/管理', ['controller' => 'Users']);
+    $routes->connect('/商品一覧', ['controller' => 'Items', 'action' => 'viewAll']);
+    $routes->connect('/商品一覧/ドッグ', ['controller' => 'Items', 'action' => 'viewDog']);
+    $routes->connect('/商品一覧/キャット', ['controller' => 'Items', 'action' => 'viewCat']);
+    $routes->connect('/商品一覧/バード', ['controller' => 'Items', 'action' => 'viewBird']);
+    $routes->connect('/商品一覧/フィッシュ', ['controller' => 'Items', 'action' => 'viewFish']);
+    $routes->connect('/商品一覧/爬虫類', ['controller' => 'Items', 'action' => 'viewReptile']);
+    $routes->connect('/商品一覧/その他', ['controller' => 'Items', 'action' => 'viewOther']);
+    $routes->connect('/カート', ['controller' => 'Items', 'action' => 'myCart']);
+
+
+
 
 
     /**

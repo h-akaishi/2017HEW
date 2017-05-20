@@ -37,31 +37,7 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function initialize()
-    {
-        parent::initialize();
-
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-        $this->loadComponent('Auth',[
-        'authenticate' => [
-            'Form' => [
-                'fields' => [
-                    'username' => 'user_mail',
-                    'password' => 'password'
-                ]
-            ]
-        ],
-        'loginAction' => [
-            'controller' => 'Users',
-            'action' => 'login'
-        ]
-    ]);
-    }
-    public function beforeFilter(\Cake\Event\Event $event) {
-        parent::beforeFilter($event);
-        $this->Auth->allow(['add']);
-    }
+    
 
     /**
      * Before render callback.

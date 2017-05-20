@@ -54,12 +54,37 @@ class ItemImgsController extends AppController
         $itemImg = $this->ItemImgs->newEntity();
         if ($this->request->is('post')) {
             $itemImg = $this->ItemImgs->patchEntity($itemImg, $this->request->data);
-            if ($this->ItemImgs->save($itemImg)) {
-                $this->Flash->success(__('The item img has been saved.'));
+            $tmp_name = $itemImg['item_img']['tmp_name'];
+            if(!empty($tmp_name)){
+                $file_name = md5(uniqid(rand(), 1));
+                if($itemImg['item_img']['type'] == 'image/png'){
+                    $extension = '.png';
+                }elseif ($itemImg['item_img']['type'] == 'image/jpeg') {
+                    $extension = '.jpg';
+                }elseif($itemImg['item_img']['type'] == 'image/gif'){
+                    $extension = '.gif';
+                }else{
+                    $errMes = '画像以外のファイルはアップロードできません。';
+                    $bool = false;
+                }
+                if($itemImg['item_img']['size'] > 10485760){
+                    $errMes = 'ファイルのサイズが大きすぎます。';
+                    $bool = false;
+                }
+                if(!isset($errMes)){
+                    $bool = move_uploaded_file($itemImg['item_img']['tmp_name'], WWW_ROOT.'img'.DS.'itemimg'.DS.$file_name.$extension);
+                }
+            }else{
+                $bool = true;
+            }
+            if ($bool) {
+                if($this->ItemImgs->save($itemImg)){
+                    $this->Flash->success(__('保存されました。'));
 
-                return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['action' => 'index']);
+                }
             } else {
-                $this->Flash->error(__('The item img could not be saved. Please, try again.'));
+                $this->Flash->error(__('保存できませんでした。'.$errMes));
             }
         }
         $items = $this->ItemImgs->Items->find('list', ['limit' => 200]);

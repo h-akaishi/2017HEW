@@ -7,12 +7,13 @@
     </ul>
 </nav>
 <div class="itemImgs form large-9 medium-8 columns content">
-    <?= $this->Form->create($itemImg) ?>
+    <?= $this->Form->create($itemImg, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Item Img') ?></legend>
         <?php
             echo $this->Form->input('item_id', ['options' => $items]);
             echo $this->Form->input('item_url');
+            echo $this->Form->input('item_img', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

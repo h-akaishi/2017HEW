@@ -17,6 +17,9 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Static content controller
@@ -61,5 +64,18 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+     public function top()
+    {
+        $this->viewBuilder()->layout(false);
+
+        //$user =　$this->Auth->user('id');
+        $mycart = TableRegistry::get('MyCarts');
+        $user = $this->request->session()->read('Auth.User');
+        $userId = $this->request->session()->read('Auth.User.id');
+        $countCart = $mycart->find()->where(['user_id' => $userId])->count('id');
+        $this->set(compact('user','countCart'));
+
     }
 }

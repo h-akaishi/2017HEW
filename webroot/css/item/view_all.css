@@ -1,0 +1,82 @@
+body .content{
+	margin-top: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  body .content{
+	margin-top: 80px;
+	}
+}
+.row .col-md-3 .panel{
+	border:none;
+}
+
+.row .col-md-3 .panel .nav li a:hover{
+	background-color: #9c8d73;
+	color: #FFF;
+}
+
+
+.col-md-9 .col-md-12 select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.breadcrumb{
+	background-color: #FFF;
+}
+
+.breadcrumb > li + li:before {
+  content: ">";
+}
+
+.check{
+	background-color: white;
+    border-radius: 50%;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    height: 18px;
+    left: 8px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    width: 18px;
+}
+
+.check-active{
+	width: 18px;
+    height: 18px;
+    background: #343434 url(../../img/itemview/check.svg) no-repeat center;
+    background-size: 10px;
+    border-radius: 50%;
+}
+
+.op-name{
+	padding-left: 28px;
+}
+
+.paginator .pagination{
+	margin: 0;
+	float: right;
+}
+
+.item-box:hover{
+	opacity: 0.6;
+}
+
+.item-box .text-name{
+	/* ▼ボックスの表示面積の制限 */
+   width: 100%;
+   overflow: hidden;
+    
+   /* ▼改行を禁止した上で、はみ出る分量は「…」記号で省略 */
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.no-mes{
+	text-align: center;
+	font-size: 20px;
+	color: #222;
+}

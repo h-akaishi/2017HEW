@@ -1,0 +1,19 @@
+body{
+	font-family: apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
+	font-weight: bold;
+}
+
+header{
+	background-color: #FFF;
+}
+
+.form-erea{
+	width: 400px;
+	padding-top: 8px;
+}
+
+@media screen and (max-width: 1000px) {
+  .form-erea{
+  	width: 150px;
+  }
+}
